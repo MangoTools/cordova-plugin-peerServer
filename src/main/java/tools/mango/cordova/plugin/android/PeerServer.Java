@@ -44,7 +44,7 @@ public class PeerServer extends CordovaPlugin {
             result = stopServer(inputs, callbackContext);
 
         } else {
-            System.out.println("PeerServer :  Invalid action passed: %s", action);
+            System.out.println("PeerServer :  Invalid action passed:" + action);
             result = new PluginResult(Status.INVALID_ACTION);
         }
 
