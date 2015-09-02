@@ -44,7 +44,7 @@ public class PeerServer extends CordovaPlugin {
             result = stopServer(inputs, callbackContext);
 
         } else {
-            Log.d(LOGTAG, String.format("Invalid action passed: %s", action));
+            System.out.println("PeerServer :  Invalid action passed: %s", action);
             result = new PluginResult(Status.INVALID_ACTION);
         }
 
@@ -55,7 +55,7 @@ public class PeerServer extends CordovaPlugin {
 
 
     private PluginResult startServer(JSONArray inputs, CallbackContext callbackContext) {
-        Log.w(LOGTAG, "startServer");
+        System.out.println("PeerServer :  startServer");
 
         JSONObject options = inputs.optJSONObject(0);
         if(options == null) return null;
@@ -80,15 +80,15 @@ public class PeerServer extends CordovaPlugin {
     }
 
     private String __startServer() {
-        String errmsg = "";
         try {
             peerWebSocket = new PeerWebSocket(port);
             peerWebSocket.start();
-            Log.d(LOGTAG, "PeerWebSocket started on port: " + peerWebSocket.getPort());
-        } catch (  Exception ex ) {
-            Log.d(LOGTAG, "PeerWebSocket could not start: " + ex.getMessage());
+            System.out.println("PeerServer :  started on port : " + peerWebSocket.getPort());
+            return "";
+        } catch (Exception ex) {
+            System.out.println("PeerServer :  could not start: %s" + ex.getMessage());
+            return ex.getMessage();
         }
-        return errmsg;
     }
 
     private PluginResult stopServer(JSONArray inputs, CallbackContext callbackContext) {
