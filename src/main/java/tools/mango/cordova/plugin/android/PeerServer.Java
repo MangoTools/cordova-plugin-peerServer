@@ -81,15 +81,16 @@ public class PeerServer extends CordovaPlugin {
     }
 
     private String __startServer() {
+        String errmsg ="";
         try {
             peerWebSocket = new PeerWebSocket(port);
             peerWebSocket.start();
             System.out.println("PeerServer :  started on port : " + peerWebSocket.getPort());
-            return "";
         } catch (Exception ex) {
             System.out.println("PeerServer :  could not start: %s" + ex.getMessage());
-            return ex.getMessage();
+            errmsg = ex.getMessage()
         }
+        return errmsg;
     }
 
     private PluginResult stopServer(JSONArray inputs, CallbackContext callbackContext) {
