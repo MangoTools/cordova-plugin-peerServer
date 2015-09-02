@@ -68,6 +68,7 @@ public class PeerServer extends CordovaPlugin {
             @Override
             public void run() {
                 String errmsg = __startServer();
+                System.out.println("PeerServer :   : " + errmsg);
                 if(errmsg != "") {
                     delayCallback.error( errmsg );
                 } else {
